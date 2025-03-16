@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const subscriptionSchema = new mongoose.Schema(definition: {
+const subscriptionSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Subscription name is required"],
@@ -33,7 +33,7 @@ const subscriptionSchema = new mongoose.Schema(definition: {
     category:{
         type:String,
         enum:['sports','news','entertainment','music'],
-        required:trusted
+        required: true,
     },
     paymentMethod:{
         type:String,
@@ -81,7 +81,7 @@ subscriptionSchema.pre("save",function(next){
         this.renewalDate= new Date(this.startDate);
         this.renewalDate.setDate(this.renewalDate.getDate()+renewalPeriods[this.frequency]);
     }
-    if(ehis.renewalDate<new Date()){
+    if(this.renewalDate<new Date()){
         this.status='expired';
     }
     next();

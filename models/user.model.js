@@ -1,12 +1,12 @@
 import mongoose  from "mongoose";
 
-const userSchema = new mongoose.Schema(definition:{
+const userSchema = new mongoose.Schema({
     name:{
         type: String,
         required: [true,'User Name is required'],
         trim:true,
         minlenght:2,
-        maxlength:50,
+        maxlength:60,
     },
     email:{
         type: String,
@@ -20,8 +20,8 @@ const userSchema = new mongoose.Schema(definition:{
         type: String,
         required: [true,'User password is required'],
         trim:true,
-        minlenght:6,
-        maxlength:50,
+        minlenght:6
+        // maxlength:50,
 }
 }, {timestamps:true});
 
