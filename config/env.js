@@ -1,9 +1,9 @@
-import { config } from "dotenv";
+import { config } from 'dotenv';
 
 config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
 
 export const { PORT, NODE_ENV,
-    DB_URL, JWT_SECRET,JWT_EXPIRES_IN
-} = process.env;
+    DB_URI, JWT_SECRET,JWT_EXPIRES_IN,
+    ARCJET_ENV,ARCJET_KEY,
+}=process.env;
 
-// export default {PORT, NODE_ENV};

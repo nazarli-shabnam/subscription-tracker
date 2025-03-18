@@ -1,11 +1,11 @@
-import {Router} from 'express';
-import { signIn,signUp,signOut } from '../controllers/auth.controller.js';
+import { Router } from 'express';
 
-const authRouter=Router();
+import { signUp, signIn, signOut } from '../controllers/auth.controller.js';
 
-//Path:/api/v1/auth
-authRouter.post('/sign-in',signIn);
-authRouter.post('/sign-up',signUp);
+const authRouter = Router();
+
+authRouter.post('/sign-up', signUp);
+authRouter.post('/sign-in', signIn);
 authRouter.post('/sign-out', signOut);
 
 export default authRouter;
