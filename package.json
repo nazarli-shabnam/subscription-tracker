@@ -10,8 +10,10 @@
   "dependencies": {
     "@arcjet/inspect": "^1.0.0-beta.4",
     "@arcjet/node": "^1.0.0-beta.4",
+    "@upstash/workflow": "^0.2.12",
     "bcryptjs": "^3.0.2",
     "cookie-parser": "~1.4.4",
+    "dayjs": "^1.11.13",
     "debug": "~2.6.9",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -19,6 +21,7 @@
     "mongodb": "^6.14.2",
     "mongoose": "^8.12.1",
     "morgan": "~1.9.1",
+    "nodemailer": "^6.10.0",
     "subscription-tracker": "file:"
   },
   "devDependencies": {
