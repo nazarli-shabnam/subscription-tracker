@@ -21,14 +21,25 @@ export const sendReminders = serve(async (context) => {
   }
 
   for (const daysBefore of REMINDERS) {
-    const reminderDate = renewalDate.subtract(daysBefore, 'day');
+    // Clone the renewalDate to avoid mutation - dayjs subtract mutates the original object
+    const reminderDate = dayjs(renewalDate).subtract(daysBefore, 'day');
+    const now = dayjs();
+    
+    // Format label to match email template (singular for 1 day)
+    const dayLabel = daysBefore === 1 ? 'day' : 'days';
+    const reminderLabel = `${daysBefore} ${dayLabel} before reminder`;
 
-    if(reminderDate.isAfter(dayjs())) {
-      await sleepUntilReminder(context, `Reminder ${daysBefore} days before`, reminderDate);
-    }
-
-    if (dayjs().isSame(reminderDate, 'day')) {
-      await triggerReminder(context, `${daysBefore} days before reminder`, subscription);
+    // Only schedule reminders that are in the future
+    if(reminderDate.isAfter(now)) {
+      await sleepUntilReminder(context, `Reminder ${daysBefore} ${dayLabel} before`, reminderDate);
+      // After sleeping, check if subscription is still active and send reminder
+      const updatedSubscription = await fetchSubscription(context, subscriptionId);
+      if(updatedSubscription && updatedSubscription.status === 'active') {
+        await triggerReminder(context, reminderLabel, updatedSubscription);
+      }
+    } else if (reminderDate.isSame(now, 'day') || reminderDate.isBefore(now)) {
+      // If reminder date is today or in the past, send immediately
+      await triggerReminder(context, reminderLabel, subscription);
     }
   }
 });
