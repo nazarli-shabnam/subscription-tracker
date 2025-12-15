@@ -2,6 +2,59 @@
 
 A Node.js REST API for tracking and managing subscriptions with automated email reminders before renewal dates.
 
+## About This Project
+
+**Subscription Tracker** is a comprehensive backend API solution designed to help individuals and businesses keep track of their recurring subscriptions and services. Whether you're managing personal subscriptions like Netflix, Spotify, or gym memberships, or tracking business SaaS subscriptions, this API provides a centralized system to monitor, organize, and never miss a renewal date.
+
+### What Can You Do With This Project?
+
+1. **Track Multiple Subscriptions**
+
+   - Add subscriptions with details like name, price, currency, frequency (daily, weekly, monthly, yearly), and payment method
+   - Organize subscriptions by categories (sports, news, entertainment, lifestyle, technology, finance, politics, or other)
+   - Monitor subscription status (active, cancelled, expired)
+
+2. **Never Miss a Renewal**
+
+   - Automatically receive email reminders at strategic intervals (7, 5, 2, and 1 days before renewal)
+   - Get notified before your subscription renews so you can decide whether to continue or cancel
+   - Track renewal dates and payment methods for each subscription
+
+3. **User Management**
+
+   - Secure user registration and authentication using JWT tokens
+   - Each user can only access their own subscriptions
+   - Password-protected accounts with secure password hashing
+
+4. **Automated Workflows**
+
+   - Leverages Upstash QStash for reliable, scheduled email delivery
+   - Workflows automatically handle reminder scheduling when subscriptions are created
+   - Smart reminder system that only sends notifications for active subscriptions
+
+5. **Security & Performance**
+   - Built-in rate limiting to prevent abuse
+   - Bot detection to protect your API
+   - Input validation to ensure data integrity
+   - Secure authentication and authorization
+
+### Use Cases
+
+- **Personal Finance Management**: Track all your monthly subscriptions in one place and avoid surprise charges
+- **Budget Planning**: Monitor subscription costs and identify opportunities to reduce spending
+- **Business Expense Tracking**: Keep track of SaaS subscriptions and software licenses for your company
+- **Subscription Auditing**: Review and manage subscriptions before they auto-renew
+- **Family Account Management**: Centralize family subscription tracking
+
+### Key Benefits
+
+- ✅ **Automated Reminders**: Never forget a renewal date with automated email notifications
+- ✅ **Multi-Currency Support**: Track subscriptions in USD, EUR, or GBP
+- ✅ **Flexible Frequencies**: Support for daily, weekly, monthly, and yearly subscriptions
+- ✅ **Category Organization**: Easily categorize and filter subscriptions
+- ✅ **Secure & Scalable**: Built with security best practices and modern architecture
+- ✅ **RESTful API**: Easy to integrate with frontend applications or mobile apps
+
 ## Features
 
 - 🔐 User authentication (JWT-based)
