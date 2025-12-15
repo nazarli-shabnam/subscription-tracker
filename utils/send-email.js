@@ -24,9 +24,12 @@ const  mailOptions={
     subject:subject,
     html:message
 };
-transporter.sendMail(mailOptions,(error,info) => {
-    if (error) return console.log(error,'Error sending email');
+try {
+    const info = await transporter.sendMail(mailOptions);
     console.log('Email sent:' + info.response);
-});
+} catch (error) {
+    console.log(error,'Error sending email');
+    throw error;
+}
 }
 export default transporter;
