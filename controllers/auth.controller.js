@@ -82,4 +82,16 @@ export const signIn = async (req, res, next) => {
   }
 }
 
-export const signOut = async (req, res, next) => {}
+export const signOut = async (req, res, next) => {
+  try {
+    // In a stateless JWT system, logout is typically handled client-side
+    // by removing the token. However, we can add token blacklisting here if needed.
+    // For now, we'll just return a success response.
+    res.status(200).json({
+      success: true,
+      message: 'User signed out successfully'
+    });
+  } catch (error) {
+    next(error);
+  }
+}
