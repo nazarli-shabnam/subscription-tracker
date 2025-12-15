@@ -10,7 +10,7 @@ export const createSubscription = async (req, res, next) => {
     });
 
     const { workflowRunId } = await workflowClient.trigger({
-      url: `${SERVER_URL}/api/v1/workflows/subscription/reminder`,
+      url: `${SERVER_URL}/api/v1/workflows/subscriptions/reminder`,
       body: {
         subscriptionId: subscription.id,
       },
@@ -29,7 +29,7 @@ export const createSubscription = async (req, res, next) => {
 export const getUserSubscriptions = async (req, res, next) => {
   try {
     // Check if the user is the same as the one in the token
-    if(req.user.id !== req.params.id) {
+    if(req.user._id.toString() !== req.params.id) {
       const error = new Error('You are not the owner of this account');
       error.status = 401;
       throw error;
