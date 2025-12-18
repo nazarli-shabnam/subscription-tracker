@@ -1,7 +1,6 @@
 import Subscription from '../models/subscription.model.js';
 import Budget from '../models/budget.model.js';
 import dayjs from 'dayjs';
-// this controller is used to get the analytics of the subscriptions
 export const getSubscriptionAnalytics = async (req, res, next) => {
   try {
     const userId = req.user._id;
