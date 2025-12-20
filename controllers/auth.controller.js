@@ -12,7 +12,6 @@ export const signUp = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
 
-    // Check if a user already exists
     const existingUser = await User.findOne({ email });
 
     if(existingUser) {
@@ -21,7 +20,6 @@ export const signUp = async (req, res, next) => {
       throw error;
     }
 
-    // Hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -90,9 +88,6 @@ export const signIn = async (req, res, next) => {
 
 export const signOut = async (req, res, next) => {
   try {
-    // In a stateless JWT system, logout is typically handled client-side
-    // by removing the token. However, we can add token blacklisting here if needed.
-    // For now, we'll just return a success response.
     res.status(200).json({
       success: true,
       message: 'User signed out successfully'
